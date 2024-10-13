@@ -433,6 +433,13 @@ img {
   border-bottom: 2px solid transparent;
 }
 
+.singleProject__liveLink span {
+  display: inline-block;
+  font-size: 1.6rem;
+  margin-right: 1rem;
+  color: inherit; /* Add this in order to keep the same color */
+}
+
 .singleProject__liveLink:hover {
   font-weight: 500;
   border-bottom: 2px solid var(--color-main);
