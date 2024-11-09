@@ -37,7 +37,7 @@
               <a href="{% url "project" project.id %}" class="project">
                 <img
                   class="project__thumbnail"
-                  src="{% static "images/project-a.png" %}"
+                  src="{{project.featured_image.url}}"
                   alt="project thumbnail"
                 />
                 <div class="card__body">
