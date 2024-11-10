@@ -8,7 +8,7 @@ class Project(models.Model):
     owner = models.ForeignKey(Profile, 
                               null=True, blank=True, on_delete=models.SET_NULL)
     description = models.TextField(null=True, blank=True)
-    featured_image = models.ImageField(null=True, blank=True, default="default.png")
+    featured_image = models.ImageField(null=True, blank=True, default="/default.png")
     demo_link = models.CharField(max_length=2000, null=True, blank=True)
     source_link = models.CharField(max_length=2000, null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
@@ -19,6 +19,9 @@ class Project(models.Model):
     
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ['created']
     
     
 class Review(models.Model):
