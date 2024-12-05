@@ -20,7 +20,7 @@ def loginPage(request):
         return redirect('profiles')    
         
     if request.method == "POST":
-        username = request.POST["username"]
+        username = request.POST["username"].lower()
         password = request.POST["password"]
 
         try:
@@ -32,7 +32,7 @@ def loginPage(request):
         
         if user is not None:
             login(request, user)
-            return redirect('profiles')
+            return redirect(request.GET['next'] if 'next' in request.GET else 'account')
         else:
             messages.error(request, 'Some data are incorrect, please check!!')
 
@@ -48,7 +48,7 @@ def registerUser(request):
         
         if form.is_valid():
             user = form.save(commit=False)
-            user.username =  user.username.lower()
+            user.username = user.username.lower()
             user.save()
             
             messages.success(request, f'{user.username} was created')
